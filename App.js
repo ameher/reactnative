@@ -13,7 +13,7 @@ const AppNavigator = createDrawerNavigator({
   Profile : ProfileScreen
 })
 
-const MainNavigator = createStackNavigator({
+/*const MainNavigator = createStackNavigator({
   Home: {
     screen: HomeScreen,
     navigationOptions : ({navigation}) => ({
@@ -43,7 +43,7 @@ const MainNavigator = createStackNavigator({
       textAlign : 'center'
     }
   }
-});
+});*/
 
 const App = createAppContainer(AppNavigator);
 
