@@ -1,114 +1,112 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import {createAppContainer} from 'react-navigation';
+//import {createStackNavigator} from 'react-navigation-stack';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+import {Image, Button, StyleSheet} from 'react-native';
+import React, {Component} from 'react';
 
-import React, {Fragment} from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import HomeScreen from './src/home';
+import ProfileScreen from './src/profile';
+import LogoTitle from './src/logo';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// const AppNavigator = createDrawerNavigator({
+//   Home : HomeScreen,
+//   Profile : ProfileScreen
+// })
 
-const App = () => {
-  return (
-    <Fragment>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Fragment>
-  );
-};
+// const MainNavigator = createStackNavigator({
+//   Home: {
+//     screen: HomeScreen,
+//     navigationOptions : ({navigation}) => ({
+//       title: 'Welcome',
+//       headerTitle : LogoTitle
+//     })
+//   },
+//   Profile: {
+//     screen: ProfileScreen,
+//     navigationOptions : {
+//       title: 'Welcome to Jane\'s Profile',
+//       headerStyle:{
+//           backgroundColor :"#f4511e"
+//       }
+//     }
+//   }
+// },{
+//   initialRouteName : 'Home',
+//   defaultNavigationOptions : {
+//     headerStyle : {
+//       backgroundColor : 'green'
+//     },
+//     headerTintColor : '#fff',
+//     headerTitleStyle :{
+//       fontWeight : 'bold',
+//       flex : 1,
+//       textAlign : 'center'
+//     }
+//   }
+// });
+
+// const App = createAppContainer(AppNavigator);
+
+// export default App;
+
+class MyHomeScreen extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Home',
+    drawerIcon: ({ tintColor }) => (
+      <Image
+        source={require('./src/images/animal-track.png')}
+        style={[styles.icon, { tintColor: tintColor }]}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <Button
+        onPress={() => this.props.navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
+    );
+  }
+}
+
+class MyNotificationsScreen extends Component {
+  static navigationOptions = {
+    drawerLabel: 'Notifications',
+    drawerIcon: ({ tintColor }) => (
+      <Image
+        source={require('./src/images/animal-track.png')}
+        style={[styles.icon, { tintColor: tintColor }]}
+      />
+    ),
+  };
+
+  render() {
+    return (
+      <Button
+        onPress={() => this.props.navigation.goBack()}
+        title="Go back home"
+      />
+    );
+  }
+}
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  icon: {
+    width: 24,
+    height: 24,
   },
 });
 
-export default App;
+const MyDrawerNavigator = createDrawerNavigator({
+  Home: {
+    screen: MyHomeScreen,
+  },
+  Notifications: {
+    screen: MyNotificationsScreen,
+  },
+});
+
+const MyApp = createAppContainer(MyDrawerNavigator);
+
+export default MyApp;

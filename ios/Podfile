@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'rnative_01' do
-  # Pods for rnative_01
+target 'reactnative_02' do
+  # Pods for reactnative_02
   pod 'React', :path => '../node_modules/react-native/'
   pod 'React-Core', :path => '../node_modules/react-native/React'
   pod 'React-DevSupport', :path => '../node_modules/react-native/React'
@@ -27,7 +27,11 @@ target 'rnative_01' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'rnative_01Tests' do
+
+
+
+
+  target 'reactnative_02Tests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -35,10 +39,10 @@ target 'rnative_01' do
   use_native_modules!
 end
 
-target 'rnative_01-tvOS' do
-  # Pods for rnative_01-tvOS
+target 'reactnative_02-tvOS' do
+  # Pods for reactnative_02-tvOS
 
-  target 'rnative_01-tvOSTests' do
+  target 'reactnative_02-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
