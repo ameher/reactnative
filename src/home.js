@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button} from 'react-native';
+import {Button, View} from 'react-native';
 
 class HomeScreen extends Component {
     static navigationOptions = ({navigation}) => {
@@ -20,12 +20,20 @@ class HomeScreen extends Component {
     }
     render() {
       const {navigate} = this.props.navigation;
-      this.props.navigation.openDrawer();
+     // this.props.navigation.openDrawer();
       return (
-        <Button
-          title="Go to Jane's profile"
-          onPress={() => navigate('Profile', {name: 'Jane'})}
-        />
+        <View style={{
+          flex : 1,
+          alignItems:'center',
+          justifyContent : 'center',
+          backgroundColor:'white'
+        }}>
+          
+            <Button
+              title="Go to Jane's profile"
+              onPress={() => navigate('Profile', {name: 'Jane'})}
+            />
+        </View>
       );
     }
   }
