@@ -1,26 +1,24 @@
 import React, {Component} from 'react';
-import {Button, View} from 'react-native';
+import {Button, View,  Text, Image} from 'react-native';
+import Logo from './images/animal-track.png';
 
 class HomeScreen extends Component {
-    static navigationOptions = ({navigation}) => {
-        return {
-            headerLeft : (
-                <Button 
-                    title ='B'
-                    onPress = {() => navigation.navigate('Profile')}
-                />
-            ),
-            headerRight : (
-                <Button 
-                    title ='R'
-                    onPress = {() => navigation.navigate('Profile')}
-                />
-            )
-        }
+    static navigationOptions = {
+      drawerLabel : 'My Home',
+      drawerIcon : () => (
+        <Image
+          source = {Logo}
+          style = {{width:30,height:30}}
+          />
+      )
+        
+      
     }
+        
+    
     render() {
       const {navigate} = this.props.navigation;
-     // this.props.navigation.openDrawer();
+     
       return (
         <View style={{
           flex : 1,
@@ -32,7 +30,7 @@ class HomeScreen extends Component {
             <Text>Home Screen</Text>
             <Button 
               title="Open Side Drawer"
-              onPress={() => navigate.opeDrawer()}
+              onPress={() => this.props.navigation.openDrawer()}
             />
             {/* <Button
               title="Go to Jane's profile"

@@ -1,17 +1,29 @@
 import {createAppContainer} from 'react-navigation';
-//import {createStackNavigator} from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-//import {Image, Button, StyleSheet} from 'react-native';
-//import React, {Component} from 'react';
 
 import HomeScreen from './src/home';
 import ProfileScreen from './src/profile';
-import LogoTitle from './src/logo';
+import SideMenu from './src/sidedrawer';
 
 const AppNavigator = createDrawerNavigator({
-  Home : HomeScreen,
-  Profile : ProfileScreen
-})
+  Home : {
+    screen : HomeScreen
+  },
+  Profile : {
+    screen : ProfileScreen
+  }
+},{
+  contentComponent:SideMenu,
+  drawerWidth:200,
+  drawerPosition:'right',
+  drawerBackgroundColor:'white',
+  drawerType:'back',
+  contentOptions:{
+    activeBackgroundColor:'blue'
+  }
+}
+
+)
 
 /*const MainNavigator = createStackNavigator({
   Home: {
