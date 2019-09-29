@@ -29,10 +29,15 @@ class HomeScreen extends Component {
           backgroundColor:'white'
         }}>
           
-            <Button
+            <Text>Home Screen</Text>
+            <Button 
+              title="Open Side Drawer"
+              onPress={() => navigate.opeDrawer()}
+            />
+            {/* <Button
               title="Go to Jane's profile"
               onPress={() => navigate('Profile', {name: 'Jane'})}
-            />
+            /> */}
         </View>
       );
     }
