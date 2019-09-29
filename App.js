@@ -1,8 +1,8 @@
 import {createAppContainer} from 'react-navigation';
 //import {createStackNavigator} from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import {Image, Button, StyleSheet} from 'react-native';
-import React, {Component} from 'react';
+//import {Image, Button, StyleSheet} from 'react-native';
+//import React, {Component} from 'react';
 
 import HomeScreen from './src/home';
 import ProfileScreen from './src/profile';

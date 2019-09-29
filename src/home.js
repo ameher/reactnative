@@ -20,6 +20,7 @@ class HomeScreen extends Component {
     }
     render() {
       const {navigate} = this.props.navigation;
+      this.props.navigation.openDrawer();
       return (
         <Button
           title="Go to Jane's profile"
