@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
-import {Button, View,  Text, Image, StyleSheet} from 'react-native';
+import {View,  Text, Image, StyleSheet, ScrollView} from 'react-native';
 import {NavigationActions} from 'react-navigation';
 import Logo from './images/animal-track.png';
-import { ScrollView } from 'react-native-gesture-handler';
 
 class SideMenu extends Component {
+    navigateToScreen = (route) => () => {
+        const navigateAction = NavigationActions.navigate({
+            routeName : route
+        });
+        this.props.navigation.dispatch(navigateAction);
+    }
     render(){
         return (
             <View style={styles.container}>
